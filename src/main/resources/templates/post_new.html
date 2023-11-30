@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blog :: New Post</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 80px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        form {
+            text-align: left;
+        }
+        h2 {
+            color: #343a40;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            color: #495057;
+            margin-bottom: 5px;
+            display: block;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a th:href="@{/}">Home</a>
+    <form action="#"
+          th:action="@{'/posts/new'}"
+          th:object="${post}"
+          enctype="multipart/form-data"
+          method="post">
+        <input type="hidden" th:field="*{user}" />
+        <input type="hidden" th:field="*{createdAt}" />
+        <h2>Write a New Post</h2>
+        <div>
+            <label for="new-post-title">Title</label>
+            <input id="new-post-title" type="text" th:field="*{title}" placeholder="Title"/>
+        </div>
+        <div>
+            <label for="new-post-body">Body</label>
+            <textarea id="new-post-body" th:field="*{content}" rows="6"></textarea>
+        </div>
+        <div>
+            <label for="new-post-meta-title">Meta Title</label>
+            <input id="new-post-meta-title" type="text" th:field="*{metaTitle}" placeholder="Meta Title"/>
+        </div>
+        <div>
+            <label for="new-post-summary">Summary</label>
+            <textarea id="new-post-summary" th:field="*{summary}" rows="4"></textarea>
+        </div>
+        <button type="submit">Publish Post</button>
+    </form>
+</div>
+</body>
+</html>
