@@ -28,7 +28,7 @@ Chau Đa Víts 20015231
 ![login](img/login.png)
 
 ### Home khi login vào
-![login](img/homelogin.png)
+![login](img/homeLogin.png)
 
 ### Thêm new Post
 ![post](img/newPost.png)
